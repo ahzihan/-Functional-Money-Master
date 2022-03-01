@@ -12,14 +12,14 @@
 
 <body>
     <header class="container">
-        <h1 class="text-center text-primary my-5">Money Expense</h1>
+        <h1 class="text-center text-primary my-5 my-sm-3">Money Expense</h1>
     </header>
     <main class="container col-lg-12 d-flex justify-content-between">
         <div class="banner col-md-6 col-lg-6 col-sm-12 col-xs-12">
             <img src="img/960x0.jpg" alt="">
         </div>
         <div class="main-field col-lg-6 col-md-6 col-sm-12 col-xs-12">
-            <h3 class="text-center fw-bold my-4">Income</h3>
+            <h3 class="text-center fw-bold my-4 my-sm-1">Income</h3>
             <div class="row g-2 align-items-center w-50 mx-auto my-2">
                 <div class="col-auto col-md-4 text-end">
                     <label for="income" class="col-form-label">Income: </label>
@@ -30,7 +30,7 @@
                 <span id="error-message" class="text-center"></span>
             </div>
 
-            <h3 class="text-center fw-bold my-3 fs-5">Expenses</h3>
+            <h3 class="text-center fw-bold my-3 my-sm-1 fs-5">Expenses</h3>
             <div class="row g-2 align-items-center w-50 mx-auto my-2">
                 <div class="col-auto col-md-4 text-end">
                     <label for="food" class="col-form-label">Food: </label>
@@ -56,27 +56,26 @@
                 </div>
             </div>
             <button id="calculate" class="d-block mx-auto px-4 rounded btn-md btn-primary fs-5 fw-normal my-4">Calculate</button>
-            <h3 class="text-center fw-bold my-3 fs-5">Total Expenses: <span id="total-expence">00</span></h3>
-            <h3 class="text-center fw-bold my-3 fs-5">Balance: <span id="new-balance">00</span></h3>
-            <div class="row w-50 mx-auto my-4">
-                <div class="col-md-4 text-end">
+            <h3 class="text-center fw-bold my-3 my-sm-1 fs-5">Total Expenses: <span id="total-expence">00</span></h3>
+            <h3 class="text-center fw-bold my-3 my-sm-1 fs-5">Balance: <span id="new-balance">00</span></h3>
+            <div class="row w-50 w-sm-100 mx-auto my-4">
+                <div class="col-md-4 col-sm-6 text-end text-sm-center">
                     <label class="fs-5">Save: </label>
                 </div>
-                <div class="col-md-3">
+                <div class="col-md-3 col-sm-6 text-sm-center">
                     <input type="text" id="per" class="form-control">
                 </div>
-                <div class="col-md-2">
-                    <span class="text-center fs-5">%</span>
+                <div class="col-md-2 col-sm-6">
+                    <span class="text-center fs-5 text-sm-center">%</span>
                 </div>
-                <div class="col-md-3 text-start">
+                <div class="col-md-3 col-sm-6 text-start text-sm-center">
                     <button id="save" class="rounded btn-md btn-primary fs-5">Save</button>
                 </div>
             </div>
-            <h3 class="text-center fw-bold my-3 fs-5">Saving Amount: <span id="saving-amount">1200</span></h3>
-            <h3 class="text-center fw-bold my-3 fs-5">Remaining Balance: <span id="remaining-balance">1500</span></h3>
+            <h3 class="text-center fw-bold my-3 my-sm-1 fs-5">Saving Amount: <span id="saving-amount">1200</span></h3>
+            <h3 class="text-center fw-bold my-3 my-sm-1 fs-5">Remaining Balance: <span id="remaining-balance">1500</span></h3>
         </div>
     </main>
-
 
     <script src="js/app.js"></script>
 </body>
