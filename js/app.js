@@ -3,60 +3,89 @@ function getIncome() {
     const totalIncome = parseFloat( income.value );
     return totalIncome;
 }
+function getExpence( fieldId ) {
+    const expenceAmount = document.getElementById( fieldId );
+    const expence = parseFloat( expenceAmount.value );
+    return expence;
+}
+function totalExpence() {
+    const foodExpence = getExpence( 'food' );
+    const rentExpence = getExpence( 'rent' );
+    const clothsExpence = getExpence( 'cloths' );
+    const totalExpence = foodExpence + rentExpence + clothsExpence;
+    return totalExpence;
+}
+function getInnetTextValue( fieldId ) {
+    const innerValue = document.getElementById( fieldId );
+    return innerValue;
+};
 
 function getInputValue() {
     const totalIncome = getIncome();
-    const errorMessage = document.getElementById( 'error-message' );
-
-    const checkInput = document.getElementsByTagName( 'input' ).value;
+    const errorMessage = getInnetTextValue( 'error-message' );
     errorMessage.style.color = 'red';
     if ( totalIncome > 0 ) {
-        const expence = document.getElementById( 'total-expence' );
-        const balance = document.getElementById( 'new-balance' );
+        const expence = getInnetTextValue( 'total-expence' );
+        const balance = getInnetTextValue( 'new-balance' );
 
-        const food = document.getElementById( 'food' );
-        const foodExpence = parseFloat( food.value );
-
-        const rent = document.getElementById( 'rent' );
-        const rentExpence = parseFloat( rent.value );
-
-        const cloths = document.getElementById( 'cloths' );
-        const clothsExpence = parseFloat( cloths.value );
-
-        const totalExpence = foodExpence + rentExpence + clothsExpence;
-
-        if ( totalIncome < totalExpence ) {
-            errorMessage.innerText = 'Not enough Money! , Please Try again';
+        const expenceAmount = totalExpence();
+        if ( expenceAmount >= 0 ) {
+            if ( totalIncome < expenceAmount ) {
+                errorMessage.innerText = 'Not enough Money! , Please Try again';
+            } else {
+                const newBalance = totalIncome - expenceAmount;
+                expence.innerText = expenceAmount;
+                balance.innerText = newBalance;
+                errorMessage.innerText = '';
+            }
         } else {
-            const newBalance = totalIncome - totalExpence;
-            expence.innerText = totalExpence;
-            balance.innerText = newBalance;
-            errorMessage.innerText = '';
+            errorMessage.innerText = 'Please Enter Expence Value';
         }
+
     } else {
-        errorMessage.innerText = 'Please Enter a Posetive Number';
+        errorMessage.innerText = 'Please Enter Your Income';
     }
 }
 
-function percentage() {
-    const percent = document.getElementById( 'per' );
-    const percentAmount = parseFloat( percent.value );
-
-    const savings = document.getElementById( 'saving-amount' );
-    const remaining = document.getElementById( 'remaining-balance' );
+function getParcentage() {
+    const errorMessage = getInnetTextValue( 'error-message' );
+    errorMessage.style.color = 'red';
+    const percentAmount = getExpence( 'per' );
+    const savings = getInnetTextValue( 'saving-amount' );
+    const remaining = getInnetTextValue( 'remaining-balance' );
     const totalIncome = getIncome();
-
+    const expenceAmount = totalExpence();
     const savingAmount = ( totalIncome / 100 ) * percentAmount;
-    const remainingAmount = totalIncome - savingAmount;
+    if ( totalIncome > 0 ) {
+        if ( percentAmount > 0 ) {
+            savings.innerText = savingAmount;
+        } else {
+            errorMessage.innerText = 'Please, Enter Percentage Amount!';
+        }
+        const remainingAmount = totalIncome - ( savingAmount + expenceAmount );
+        if ( expenceAmount > 0 ) {
+            if ( remainingAmount > 0 ) {
+                remaining.innerText = remainingAmount;
+                errorMessage.innerText = '';
+            } else {
+                errorMessage.innerText = 'Not enough Money! , Please Try again';
+            }
+            errorMessage.innerText = '';
 
-    savings.innerText = savingAmount;
-    remaining.innerText = remainingAmount;
+        } else {
+            errorMessage.innerText = 'Please, Enter Expence Amount!';
+        }
+        errorMessage.innerText = '';
+    } else {
+        errorMessage.innerText = 'Please Enter Your Income';
+    }
 }
+
 
 document.getElementById( 'calculate' ).addEventListener( 'click', function () {
     getInputValue();
 } );
 
 document.getElementById( 'save' ).addEventListener( 'click', function () {
-    percentage();
+    getParcentage();
 } );
